@@ -14,6 +14,7 @@ public class Book {
     public void test(){
         System.out.println(bName);
         System.out.println("git2");
+        System.out.println("test");
     }
 
 }
