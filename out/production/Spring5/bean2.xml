@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--1 service和dao对象创建-->
+    <bean id="userService" class="com.dfp.spring5.service.UserService">
+        <!--注入userDao对象
+            name属性：类里面属性名称
+            ref属性：创建userDao对象bean标签id值
+        -->
+        <property name="userDao" ref="userDaoImpl"></property>
+    </bean>
+    <bean id="userDaoImpl" class="com.dfp.spring5.dao.UserDaoImpl"></bean>
+
+    <bean id="stu" class="com.dfp.spring5.bean.Stu">
+<!--        数组属性-->
+        <property name="courses">
+            <array>
+                <value>java</value>
+                <value>c++</value>
+            </array>
+        </property>
+<!--        list属性-->
+        <property name="list">
+            <list>
+                <value>天龙八部</value>
+                <value>大器晚成</value>
+                <value>孙悟空</value>
+            </list>
+        </property>
+<!--        map属性-->
+        <property name="maps">
+            <map>
+                <entry key="课程" value="java"/>
+                <entry key="时间" value="周三"/>
+
+            </map>
+
+        </property>
+        <property name="sets">
+            <set>
+                <value>redis</value>
+                <value>mysql</value>
+                <value>mongodb</value>
+                <value>oss</value>
+            </set>
+        </property>
+        <property name="courseList">
+            <list>
+<!--                外部链入-->
+                <ref bean="c1"></ref>
+                <ref bean="c2"></ref>
+            </list>
+        </property>
+    </bean>
+<!--    定义好对象-->
+    <bean id="c1" class="com.dfp.spring5.bean.Course">
+        <property name="cname" value="好好学习"/>
+    </bean>
+    <bean id="c2" class="com.dfp.spring5.bean.Course">
+        <property name="cname" value="天天向上"/>
+    </bean>
+</beans>
